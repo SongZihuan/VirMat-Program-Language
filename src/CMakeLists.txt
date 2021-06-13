@@ -1,0 +1,7 @@
+﻿ADD_SUBDIRECTORY(safe_mem)
+ADD_SUBDIRECTORY(tool)
+ADD_SUBDIRECTORY(cjson)
+ADD_SUBDIRECTORY(vtc)
+
+ADD_EXECUTABLE(VirMat main.c)
+TARGET_LINK_LIBRARIES(VirMat vtc_mem vtc_tool VirMatCore)

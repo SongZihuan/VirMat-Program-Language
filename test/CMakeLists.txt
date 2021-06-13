@@ -1,0 +1,24 @@
+﻿FUNCTION(ADD_VirMatTest TEST_NAME TEST_SOURCE)
+    ADD_EXECUTABLE(VirMatTest_${TEST_NAME} ${TEST_SOURCE})
+    TARGET_LINK_LIBRARIES(VirMatTest_${TEST_NAME} vtc_mem vtc_tool)
+    ADD_TEST(NAME VirMatTest_${TEST_NAME} COMMAND $<TARGET_FILE:VirMatTest_${TEST_NAME}>)
+ENDFUNCTION()
+
+FUNCTION(SET_PASS TEST_NAME PASS_STR)
+    SET_TESTS_PROPERTIES(VirMatTest_${TEST_NAME} PROPERTIES PASS_REGULAR_EXPRESSION ${PASS_STR})
+ENDFUNCTION()
+
+FUNCTION(SET_LINK TEST_NAME LIB)
+    TARGET_LINK_LIBRARIES(VirMatTest_${TEST_NAME} ${LIB})
+ENDFUNCTION()
+
+ADD_LIBRARY(test_lib SHARED test_lib.c)
+
+ADD_VirMatTest(mem test_mem.c)
+ADD_VirMatTest(lib test_test_lib.c)
+ADD_VirMatTest(dlc test_dlc.c)
+
+SET_LINK(lib test_lib)
+
+SET_PASS(lib "num = 100 test = 110")
+SET_PASS(dlc "a = 100, test = 110")
