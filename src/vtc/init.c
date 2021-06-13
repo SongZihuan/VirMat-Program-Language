@@ -5,6 +5,11 @@
 #include <locale.h>
 #include "virmat.h"
 
+#include "statement.h"
+#include "value.h"
+#include "var.h"
+#include "inter.h"
+
 int vtcInit(void) {
     atexit(dlcExit);
     cJsonInit();
