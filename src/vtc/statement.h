@@ -70,7 +70,7 @@ struct vt_Parameter {
     struct vt_Parameter *next;
 };
 
-struct vt_Backtracking {
+struct vt_Backtracking {  // 结果回溯
     fline line;  // 代码行号
     fpath file;  // 代码文件路径
     struct vt_Backtracking *next;

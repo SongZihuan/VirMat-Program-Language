@@ -9,6 +9,7 @@
 #include "value.h"
 #include "var.h"
 #include "inter.h"
+#include "parser.h"
 
 int vtcInit(void) {
     atexit(dlcExit);
